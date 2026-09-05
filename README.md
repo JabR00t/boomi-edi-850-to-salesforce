@@ -2,6 +2,14 @@
 
 A Boomi integration project that reads an X12 850 Purchase Order from disk, processes EDI qualifiers and instance identifiers, maps the purchase order into a Salesforce custom object, and creates the record through the Salesforce REST API.
 
+## Documentation
+
+- [Setup Guide](docs/setup.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Boomi Component Inventory](boomi/component-inventory.md)
+- [Salesforce Object Schema](salesforce/object-schema.md)
+- [Salesforce Permissions](salesforce/permissions.md)
+
 ## Architecture
 
 ```mermaid
@@ -67,3 +75,42 @@ The Boomi components used by this integration are documented in:
 The EDI-to-Salesforce mapping has also been exported from Boomi:
 
 [Map Export](boomi/exports/x12-850-to-salesforce-map.xlsx)
+
+## Setup Guide
+
+For step-by-step instructions to recreate the integration, see:
+
+[Setup Guide](docs/setup.md)
+
+
+## Validation
+
+The integration was tested end-to-end using the sample X12 850 file:
+
+`sample-data/inbound/PO_850_001.edi`
+
+The Boomi process completed successfully and created a Salesforce record in:
+
+`Purchase_Order__c`
+
+Verified values:
+
+| Salesforce Field | Value |
+|---|---|
+| `Name` | `PO12345` |
+| `Bill_To_Name__c` | `ABC CORPORATION` |
+| `Bill_To_City__c` | `NEW YORK` |
+| `Ship_To_Name__c` | `ABC WAREHOUSE` |
+| `Ship_To_City__c` | `CHICAGO` |
+| `Ship_From_Name__c` | `XYZ FACTORY` |
+
+The result was verified using SOQL:
+
+```sql
+SELECT Name, Bill_To_Name__c, Bill_To_City__c, Ship_To_Name__c, Ship_To_City__c, Ship_From_Name__c FROM Purchase_Order__c WHERE Name = 'PO12345'
+```
+
+See the execution and Salesforce result screenshots in:
+
+`docs/screenshots/`
+
