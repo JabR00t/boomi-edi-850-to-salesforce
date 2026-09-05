@@ -56,3 +56,14 @@ flowchart LR
 │   └── permissions.md
 ├── README.md
 └── .gitignore
+```
+
+## Boomi Components
+
+The Boomi components used by this integration are documented in:
+
+[Component Inventory](boomi/component-inventory.md)
+
+The EDI-to-Salesforce mapping has also been exported from Boomi:
+
+[Map Export](boomi/exports/x12-850-to-salesforce-map.xlsx)
