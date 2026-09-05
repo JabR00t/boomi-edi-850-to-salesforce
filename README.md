@@ -38,28 +38,21 @@ flowchart LR
 | N1 Loop [ST] → N4 → N401 | Ship_To_City__c |
 | N1 Loop [SF] → N102 | Ship_From_Name__c |
 
-## Screenshots
+## Repository Structure
 
-### X12 850 Profile
-
-![X12 850 Profile](docs/screenshots/02-edi-profile.png)
-
-### N101 Qualifiers
-
-![N101 Qualifiers](docs/screenshots/03-n101-qualifiers.png)
-
-### Instance Identifiers
-
-![Instance Identifiers](docs/screenshots/04-instance-identifiers.png)
-
-### EDI to Salesforce Map
-
-![Boomi Map](docs/screenshots/05-boomi-map.png)
-
-### Boomi Process
-
-![Boomi Process](docs/screenshots/06-main-process.png)
-
-### Salesforce Result
-
-![Salesforce Result](docs/screenshots/07-salesforce-result.png)
+```text
+.
+├── boomi/
+│   └── exports/
+├── docs/
+│   ├── architecture/
+│   ├── screenshots/
+│   └── troubleshooting.md
+├── sample-data/
+│   ├── inbound/
+│   └── expected-output/
+├── salesforce/
+│   ├── object-schema.md
+│   └── permissions.md
+├── README.md
+└── .gitignore
